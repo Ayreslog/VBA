@@ -1,0 +1,35 @@
+Sub juntarabas()
+
+' desabilita atualização da tela
+Application.ScreenUpdating = False
+' desabilita mensagens
+Application.DisplayAlerts = False
+' dimensiona variável
+Dim LIN As Integer
+' copia o conteúdo da aba seguinte e apaga a aba
+Do
+Sheets("Lista").Select
+' define a primeira linha vazia da aba atual
+LIN = Cells(Rows.Count, 1).End(xlUp).Offset(1, 0).Row
+' vai para a aba seguinte
+ActiveSheet.Next.Select
+' copia o conteúdo necessário
+Range("f1:f" & Cells(Rows.Count, 1).End(xlUp).Row).EntireRow.Copy
+' volta para a aba inicial e cola
+ActiveSheet.Previous.Select
+Rows(LIN).Insert Shift:=xlDown
+' vai para a aba copiada e deleta ela
+ActiveSheet.Next.Select
+ActiveSheet.Delete
+' limpa a variável LIN
+LIN = 0
+' repete o procedimento até haver apenas 1 aba
+Loop Until Worksheets.Count = 1
+'apaga área de transferência
+Application.CutCopyMode = False
+' habilita atualização da tela
+Application.ScreenUpdating = False
+' habilita mensagens
+Application.DisplayAlerts = False
+Range("A1").Select
+End Sub
