@@ -1,0 +1,25 @@
+Sub enviar_email()
+
+Set objeto_outlook = CreateObject("Outlook.Application")
+
+Set Email = objeto_outlook.createitem(0)
+
+Email.display
+
+Email.to = Cells(2, 7).Value
+Email.cc = "ayres.filho@bulkylog.com.br""karen.bastos@bulkylog.com.br""paulo.soares@bulkylog.com.br""lucas.vieira@bulkylog.com.br""gabriel.machado@bulkylog.com.br""vinicius.rosa@bulkylog.com.br""consolidadorlgc@gmail.com""bruno.pierozan@madeiramadeira.com.br"
+
+
+Email.bcc = "guilherme.isidoro@bulkylog.com.br"
+
+Email.Subject = "OCORRÊNCIAS DESCARGA - BULKYLOG RS X FORNECEDOR - 14/11/2020"
+
+
+Email.Body = Cells(2, 2).Value & "," & Chr(10) & Chr(10) _
+& Cells(3, 9).Value & Chr(10) & Chr(10) _
+& "Att," & Chr(10) & "Ayres Costa"
+
+Email.Attachments.Add (ThisWorkbook.Path & "\Vendas - " & Cells(2, 2).Value & ".xlsx")
+Email.send
+
+End Sub
