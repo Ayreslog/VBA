@@ -1,0 +1,61 @@
+Private Sub caixa_ocorrencia_Change()
+
+End Sub
+
+Private Sub CommandButton1_Click()
+
+linha = Sheets("Entrada").Range("A1048576").End(xlUp).Row + 1
+
+Sheets("Entrada").Cells(linha, 1).Value = caixa_data.Value
+Sheets("Entrada").Cells(linha, 2).Value = caixa_conferente.Value
+Sheets("Entrada").Cells(linha, 4).Value = caixa_fornecedor.Value
+Sheets("Entrada").Cells(linha, 6).Value = caixa_nota.Value
+Sheets("Entrada").Cells(linha, 7).Value = caixa_qtd.Value
+Sheets("Entrada").Cells(linha, 8).Value = caixa_ocorrencia.Value
+Sheets("Entrada").Cells(linha, 9).Value = caixa_volanomalia.Value
+Sheets("Entrada").Cells(linha, 12).Value = caixa_arma.Value
+Sheets("Entrada").Cells(linha, 13).Value = caixa_status.Value
+End Sub
+
+Private Sub CommandButton2_Click()
+
+Unload Registrodeocorrencias
+
+End Sub
+
+Private Sub Label4_Click()
+
+End Sub
+
+Private Sub TextBox1_Change()
+
+End Sub
+
+Private Sub UserForm_Initialize()
+
+'Essa parte adiciona a lista de conferentes na caixa conferente
+
+ultima_linha = Sheets("Apoio").Range("A1").End(xlDown).Row
+
+caixa_conferente.RowSource = "Apoio!A1:A" & ultima_linha
+
+'Essa parte adiciona a lista de fornecedores na caixa fornecedor
+
+ultima_linha = Sheets("Apoio").Range("B1").End(xlDown).Row
+
+caixa_fornecedor.RowSource = "Apoio!B1:B" & ultima_linha
+
+'Essa parte adiciona a lista de Ocorrencias na caixa ocorrencia
+
+ultima_linha = Sheets("Apoio").Range("C1").End(xlDown).Row
+
+caixa_ocorrencia.RowSource = "Apoio!C1:C" & ultima_linha
+
+'Essa parte adiciona a lista de Ocorrencias na caixa ocorrencia
+
+ultima_linha = Sheets("Apoio").Range("D1").End(xlDown).Row
+
+caixa_status.RowSource = "Apoio!D1:D" & ultima_linha
+
+
+End Sub

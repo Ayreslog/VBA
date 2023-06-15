@@ -1,0 +1,13 @@
+GERAL RELATORIO VBA 
+
+GERAL - DECLARAÇÃO
+
+Option Explicit
+
+Sub RELATÓRIO()
+
+    ActiveSheet.ExportAsFixedFormat Type:=xlTypePDF, Filename:= _
+        "C:\Users\Clayton\Desktop\Nova pasta (4)\RELATÓRIO.pdf" _
+        , Quality:=xlQualityStandard, IncludeDocProperties:=True, IgnorePrintAreas _
+        :=False, OpenAfterPublish:=True
+End Sub
